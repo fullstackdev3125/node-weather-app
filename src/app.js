@@ -19,6 +19,9 @@ const forecast = require('./utils/forecast');
 
 // Store the express application
 const app = express();
+// When this app runs on Heroku, you need to use an Environment variable
+// Use port 3000 as a fallback
+const port = process.env.PORT || 3000;
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, '../public');
 // For when you call your 'views' folder some other name
@@ -198,6 +201,6 @@ app.get('*', (req, res) => {
 
 // Now you need to start the server
 // This is an asynchronous process
-app.listen(3000, () => {
-    console.log('Server is up on port 3000');
+app.listen(port, () => {
+    console.log('Server is up on port ' + port);
 });
